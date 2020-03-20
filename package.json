@@ -1,0 +1,22 @@
+{
+  "name": "ccglearningresources",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nrstirzaker/CCGLearningResources.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nrstirzaker/CCGLearningResources/issues"
+  },
+  "homepage": "https://github.com/nrstirzaker/CCGLearningResources#readme",
+  "dependencies": {
+    "google-spreadsheet": "^3.0.10"
+  }
+}
