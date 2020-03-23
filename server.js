@@ -1,7 +1,7 @@
 const express = require('express')
 const datasource = require('./datasource');
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000; // set our port
 
 app.get('/', (req, res) => {
     datasource.getData().
