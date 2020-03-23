@@ -1,11 +1,11 @@
 const getRowAsJson = function (spreadSheetRow) {
     const rowOutput = {};
     const rows = [];
-    const col1 = spreadSheetRow.First;
-    const col2 = spreadSheetRow.Second;
-    const col3 = spreadSheetRow.Third;
+    const Topic = spreadSheetRow.Topic;
+    const URL = spreadSheetRow.URL;
+    const Notes = spreadSheetRow.Notes;
     const rowNumber = spreadSheetRow.rowNumber - 1;
-    rowOutput["row" + rowNumber] = {col1,col2,col3}
+    rowOutput["row" + rowNumber] = {Topic,URL,Notes}
     return rowOutput;
 }
 
