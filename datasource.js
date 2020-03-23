@@ -9,7 +9,7 @@ const getData = function (){
             then(
                 result => {resolve(result)}
             ).catch(
-                error => {reject("main error" + error)}
+                error => {reject("loadSheet returned an error: " + error)}
             );
 
     })
@@ -42,7 +42,7 @@ async function loadSheet(){
         return output;
 
     } catch (error) {
-        console.log(error);
+        process.stderr.write(error);
         return {error}
     }
    
