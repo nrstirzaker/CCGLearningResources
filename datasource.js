@@ -8,9 +8,16 @@ const getData = function (queryParams){
     return new Promise((resolve,reject) =>{
         loadSheet(queryParams.topic).
             then(
-                result => {resolve(result)}
+                result => {
+                    process.stdout.write("loadSheet Resolved\n");
+                    resolve(result)
+                }
             ).catch(
-                error => {reject("loadSheet returned an error: " + error.message)}
+                error => {
+                    process.stdout.write("loadSheet Error Caught\n");
+                    process.stdout.write(error);
+                    reject("loadSheet returned an error: " + error.message)
+                }
             );
 
     })
