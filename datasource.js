@@ -29,7 +29,7 @@ async function loadSheet(param){
     //try {
 
         if(credentials.getKeys().sheet_id){
-            process.stdout.write("sheet_id has a value:" + credentials.getKeys().sheet_id + "\n");
+            process.stdout.write("sheet_id has a value\n");
         }else{
             process.stdout.write("sheet_id has NO value\n");
         }
@@ -41,7 +41,7 @@ async function loadSheet(param){
         }
 
         if(credentials.getKeys().client_email){
-            process.stdout.write("client_email has a value\n");
+            process.stdout.write("client_email has a value" + credentials.getKeys().client_email + "\n");
         }else{
             process.stdout.write("client_email has NO value\n");
         }
@@ -49,6 +49,11 @@ async function loadSheet(param){
 
         const doc = new GoogleSpreadsheet(credentials.getKeys().sheet_id);
         process.stdout.write("GoogleSpreadsheet:" + doc + " Created\n");
+
+        // await doc.useServiceAccountAuth({
+        //     client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+        //     private_key: process.env.GOOGLE_PRIVATE_KEY,
+        //   });
 
         await doc.useServiceAccountAuth({
             client_email: credentials.getKeys().client_email,
