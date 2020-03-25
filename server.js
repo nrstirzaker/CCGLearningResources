@@ -15,7 +15,6 @@ app.get('/uptime', (req,res) => {
 });
 
 app.get('/', (req, res) => {
-    res.writeHead(200, {'Content-Type': 'application/json'});
     datasource.getData(req.query).
         then(
             result => {res.send(result)}
