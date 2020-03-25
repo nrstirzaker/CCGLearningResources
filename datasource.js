@@ -19,7 +19,7 @@ const getData = function (queryParams){
 async function loadSheet(param){  
     const lowerCaseParam = param ? param.toLowerCase() : 'all';
     process.stdout.write("Query Params: " + lowerCaseParam + "\n");
-    try {
+    //try {
 
         if(credentials.getKeys().sheet_id){
             process.stdout.write("sheet_id has a value\n");
@@ -75,11 +75,11 @@ async function loadSheet(param){
 
         return output;
 
-    } catch (error) {
-        process.stdout.write(error.message);
-        process.stderr.write(error);
-        throw error
-    }
+    // } catch (error) {
+    //     process.stdout.write(error.message);
+    //     process.stderr.write(error);
+    //     throw error
+    // }
    
 };
 
