@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
         then(
             result => {res.send(result)}
         ).catch(
-            errorMsg => {res.send({"error":errorMsg})}
+            error => {res.send({"error":error.message})}
         );
     
 })

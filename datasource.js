@@ -50,8 +50,7 @@ async function loadSheet(param){
 
     } catch (error) {
         process.stdout.write(error.message);
-        var msg = error.message;
-        throw msg
+        throw error
     }
    
 };
