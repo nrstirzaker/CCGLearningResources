@@ -21,15 +21,21 @@ async function loadSheet(param){
     try {
 
         if(credentials.getKeys().sheet_id){
-            process.stdout.write("sheet_id has a value");
+            process.stdout.write("sheet_id has a value\n");
+        }else{
+            process.stdout.write("sheet_id has NO value\n");
         }
 
         if(credentials.getKeys().private_id){
-            process.stdout.write("private_id has a value");
+            process.stdout.write("private_id has a value\n");
+        }else{
+            process.stdout.write("private_id has NO value\n");
         }
 
         if(credentials.getKeys().client_email){
-            process.stdout.write("client_email has a value");
+            process.stdout.write("client_email has a value\n");
+        }else{
+            process.stdout.write("client_email has NO value\n");
         }
 
 
@@ -64,6 +70,7 @@ async function loadSheet(param){
 
     } catch (error) {
         process.stdout.write(error.message);
+        process.stderr.write(error);
         throw error
     }
    
