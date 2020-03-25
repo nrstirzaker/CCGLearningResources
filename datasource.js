@@ -14,8 +14,7 @@ const getData = function (queryParams){
                 }
             ).catch(
                 error => {
-                    process.stdout.write("loadSheet Error Caught\n");
-                    //process.stdout.write(error);
+                    process.stdout.write("loadSheet Error: " + error.message +"\n");
                     reject("loadSheet returned an error: " + error.message)
                 }
             );
@@ -29,23 +28,15 @@ async function loadSheet(param){
     try {
 
         if(credentials.getKeys().sheet_id){
-            process.stdout.write("sheet_id has a value\n");
-        }else{
-            process.stdout.write("sheet_id has NO value\n");
+            process.stdout.write("Sheet Id retrieved\n");
         }
 
         if(credentials.getKeys().api_key){
-            const first5 = credentials.getKeys().api_key.substring(0,5);
-            process.stdout.write("API Key has a value, first 5 are :" + first5 +"\n");
-            
-        }else{
-            process.stdout.write("private_key has NO value\n");
+            process.stdout.write("API Key retrieved\n");
         }
 
-
-
         const doc = new GoogleSpreadsheet(credentials.getKeys().sheet_id);
-        process.stdout.write("GoogleSpreadsheet:" + doc + " Created\n");
+        process.stdout.write("GoogleSpreadsheet Created\n");
 
         doc.useApiKey(credentials.getKeys().api_key);          
         process.stdout.write("API Key Set\n");
@@ -77,8 +68,7 @@ async function loadSheet(param){
 
     } catch (error) {
         process.stdout.write(error.message);
-        process.stderr.write(error);
-        //throw error
+        throw error
     }
    
 };
