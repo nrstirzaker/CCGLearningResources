@@ -29,7 +29,7 @@ async function loadSheet(param){
     //try {
 
         if(credentials.getKeys().sheet_id){
-            process.stdout.write("sheet_id has a value\n");
+            process.stdout.write("sheet_id has a value:" + credentials.getKeys().sheet_id + "\n");
         }else{
             process.stdout.write("sheet_id has NO value\n");
         }
@@ -48,7 +48,7 @@ async function loadSheet(param){
 
 
         const doc = new GoogleSpreadsheet(credentials.getKeys().sheet_id);
-        process.stdout.write("Document Accessed");
+        process.stdout.write("GoogleSpreadsheet:" + doc + " Created\n");
 
         await doc.useServiceAccountAuth({
             client_email: credentials.getKeys().client_email,
