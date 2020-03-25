@@ -18,9 +18,10 @@ app.get('/', (req, res) => {
     datasource.getData(req.query).
         then(
             result => {res.send(result)}
-        ).catch(
-            error => {res.send({"error":error.message})}
-        );
+        )
+        // .catch(
+        //     error => {res.send({"error":error.message})}
+        // );
     
 })
 
