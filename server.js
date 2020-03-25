@@ -2,6 +2,7 @@ const express = require('express')
 const datasource = require('./datasource');
 const stream = require('stream');
 const moment = require('moment');
+const cors = require('cors')
 const app = express()
 const port = process.env.PORT || 3000; // set our port
 
@@ -14,7 +15,7 @@ app.get('/uptime', (req,res) => {
 
 });
 
-app.get('/', (req, res) => {
+app.get('/', cors(), (req, res) => {
     datasource.getData(req.query).
         then(
             result => {res.send(result)}
