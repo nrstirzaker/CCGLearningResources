@@ -2,6 +2,7 @@
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 const credentials = require('./ConfigManager');
 const rowUtils = require('./RowUtils');
+const stream = require('stream');
 
 const getData = function (queryParams){
     return new Promise((resolve,reject) =>{
@@ -18,6 +19,19 @@ const getData = function (queryParams){
 async function loadSheet(param){  
     const lowerCaseParam = param ? param.toLowerCase() : 'all';
     try {
+
+        if(credentials.getKeys().sheet_id){
+            process.stdout.write("sheet_id has a value");
+        }
+
+        if(credentials.getKeys().private_id){
+            process.stdout.write("private_id has a value");
+        }
+
+        if(credentials.getKeys().client_email){
+            process.stdout.write("client_email has a value");
+        }
+
 
         const doc = new GoogleSpreadsheet(credentials.getKeys().sheet_id);
         await doc.useServiceAccountAuth({
