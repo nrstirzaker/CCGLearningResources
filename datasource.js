@@ -55,8 +55,6 @@ async function loadSheet(param){
             const rowData = rowUtils.getRowAsJson(spreadSheetRow);
             if (lowerCaseParam === rowData.Topic.toLowerCase() || lowerCaseParam === 'all'){
                 const rowNumber = spreadSheetRow.rowNumber - 1;
-                //const outputRow={};
-                //outputRow["row" + rowNumber] = rowData;
                 outputRows.push( rowData );
             }
             
