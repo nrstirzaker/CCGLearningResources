@@ -34,37 +34,24 @@ async function loadSheet(param){
             process.stdout.write("sheet_id has NO value\n");
         }
 
-        if(credentials.getKeys().private_key){
-            const first36 = credentials.getKeys().private_key.substring(1,36);
-            process.stdout.write("private_key has a value, first 36 are :" + first36 +"\n");
+        if(credentials.getKeys().api_key){
+            const first5 = credentials.getKeys().api_key.substring(0,5);
+            process.stdout.write("API Key has a value, first 5 are :" + first5 +"\n");
             
         }else{
             process.stdout.write("private_key has NO value\n");
         }
 
-        if(credentials.getKeys().client_email){
-            process.stdout.write("client_email has a value" + credentials.getKeys().client_email + "\n");
-        }else{
-            process.stdout.write("client_email has NO value\n");
-        }
 
 
         const doc = new GoogleSpreadsheet(credentials.getKeys().sheet_id);
         process.stdout.write("GoogleSpreadsheet:" + doc + " Created\n");
 
-        // await doc.useServiceAccountAuth({
-        //     client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-        //     private_key: process.env.GOOGLE_PRIVATE_KEY,
-        //   });
-
-        await doc.useServiceAccountAuth({
-            client_email: credentials.getKeys().client_email,
-            private_key: credentials.getKeys().private_key
-        });            
-        process.stdout.write("Service Account Auth Complete");
+        doc.useApiKey(credentials.getKeys().api_key);          
+        process.stdout.write("API Key Set\n");
 
         await doc.loadInfo();
-        process.stdout.write("Info Loaded");
+        process.stdout.write("Info Loaded\n");
 
         const sheet = doc.sheetsByIndex[0];
         const options = {};
@@ -75,7 +62,6 @@ async function loadSheet(param){
         const outputRows = [];
         spreadSheetRows.forEach(spreadSheetRow => {
             const rowData = rowUtils.getRowAsJson(spreadSheetRow);
-            process.stdout.write("Row Data:" + rowData); 
             if (lowerCaseParam === rowData.Topic.toLowerCase() || lowerCaseParam === 'all'){
                 const rowNumber = spreadSheetRow.rowNumber - 1;
                 const outputRow={};

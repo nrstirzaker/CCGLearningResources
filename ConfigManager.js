@@ -8,16 +8,14 @@ const getKeys = function () {
 
         var credentials = require(filename);
         var keys = {};
-        keys.private_key = credentials.private_key;
-        keys.client_email = credentials.client_email;
+        keys.api_key = credentials.api_key;
         keys.sheet_id = credentials.sheet_id;
         return keys;
 
     } else {
 
         var keys = {};
-        keys.private_key = process.env.GOOGLE_ACCNT_PRIVATE_KEY;
-        keys.client_email = process.env.CLIENT_EMAIL;
+        keys.api_key = process.env.GOOGLE_SHEETS_API_KEY;
         keys.sheet_id = process.env.SHEET_ID;
         return keys;
 
