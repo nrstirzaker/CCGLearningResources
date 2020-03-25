@@ -26,7 +26,7 @@ const getData = function (queryParams){
 async function loadSheet(param){  
     const lowerCaseParam = param ? param.toLowerCase() : 'all';
     process.stdout.write("Query Params: " + lowerCaseParam + "\n");
-    //try {
+    try {
 
         if(credentials.getKeys().sheet_id){
             process.stdout.write("sheet_id has a value\n");
@@ -35,7 +35,9 @@ async function loadSheet(param){
         }
 
         if(credentials.getKeys().private_key){
-            process.stdout.write("private_key has a value\n");
+            const first36 = credentials.getKeys().private_key.subString(1,36);
+            process.stdout.write("private_key has a value, first 36 are :" + first36 +"\n");
+            
         }else{
             process.stdout.write("private_key has NO value\n");
         }
@@ -87,11 +89,11 @@ async function loadSheet(param){
 
         return output;
 
-    // } catch (error) {
-    //     process.stdout.write(error.message);
-    //     process.stderr.write(error);
-    //     throw error
-    // }
+    } catch (error) {
+        process.stdout.write(error.message);
+        process.stderr.write(error);
+        //throw error
+    }
    
 };
 
