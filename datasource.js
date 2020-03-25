@@ -49,7 +49,7 @@ async function loadSheet(param){
         return output;
 
     } catch (error) {
-        process.stdout.write(error);
+        process.stdout.write(error.message);
         var msg = error.message;
         throw msg
     }
