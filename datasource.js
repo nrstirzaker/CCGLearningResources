@@ -52,10 +52,12 @@ async function loadSheet(param){
         const options = {};
         options.limit = 200;
         const spreadSheetRows = await sheet.getRows(options);
+        process.stdout.write("Number of rows returned:" + spreadSheetRows.length);
 
         const outputRows = [];
         spreadSheetRows.forEach(spreadSheetRow => {
-            const rowData = rowUtils.getRowAsJson(spreadSheetRow); 
+            const rowData = rowUtils.getRowAsJson(spreadSheetRow);
+            process.stdout.write("Row Data:" + rowData); 
             if (lowerCaseParam === rowData.Topic.toLowerCase() || lowerCaseParam === 'all'){
                 const rowNumber = spreadSheetRow.rowNumber - 1;
                 const outputRow={};
