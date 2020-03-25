@@ -16,9 +16,9 @@ const getKeys = function () {
     } else {
 
         var keys = {};
-        keys.private_key = process.env.PRIVATE_KEY;
-        keys.client_email = process.env.CLIENT_EMAIL;
-        keys.sheet_id = process.env.SHEET_ID;
+        keys.private_key = process.env.private_key;
+        keys.client_email = process.env.client_email;
+        keys.sheet_id = process.env.sheet_id;
         return keys;
 
     }

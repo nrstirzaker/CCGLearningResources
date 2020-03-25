@@ -19,9 +19,9 @@ app.get('/', (req, res) => {
         then(
             result => {res.send(result)}
         )
-        // .catch(
-        //     error => {res.send({"error":error.message})}
-        // );
+        .catch(
+            error => {res.send({"error":error.message})}
+        );
     
 })
 
