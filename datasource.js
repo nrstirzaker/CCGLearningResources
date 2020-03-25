@@ -35,7 +35,7 @@ async function loadSheet(param){
         }
 
         if(credentials.getKeys().private_key){
-            const first36 = credentials.getKeys().private_key.subString(1,36);
+            const first36 = credentials.getKeys().private_key.substring(1,36);
             process.stdout.write("private_key has a value, first 36 are :" + first36 +"\n");
             
         }else{
