@@ -10,7 +10,7 @@ const getData = function (queryParams){
             then(
                 result => {resolve(result)}
             ).catch(
-                error => {reject("loadSheet returned an error: " + error)}
+                error => {reject("loadSheet returned an error: " + error.message)}
             );
 
     })
@@ -18,6 +18,7 @@ const getData = function (queryParams){
 
 async function loadSheet(param){  
     const lowerCaseParam = param ? param.toLowerCase() : 'all';
+    process.stdout.write("Query Params: " + lowerCaseParam + "\n");
     try {
 
         if(credentials.getKeys().sheet_id){

@@ -16,7 +16,7 @@ const getKeys = function () {
     } else {
 
         var keys = {};
-        keys.private_key = process.env.PRIVATE_KEY;
+        keys.private_key = process.env.GOOGLE_ACCNT_PRIVATE_KEY;
         keys.client_email = process.env.CLIENT_EMAIL;
         keys.sheet_id = process.env.SHEET_ID;
         return keys;
