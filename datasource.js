@@ -27,10 +27,10 @@ async function loadSheet(param){
             process.stdout.write("sheet_id has NO value\n");
         }
 
-        if(credentials.getKeys().private_id){
-            process.stdout.write("private_id has a value\n");
+        if(credentials.getKeys().private_key){
+            process.stdout.write("private_key has a value\n");
         }else{
-            process.stdout.write("private_id has NO value\n");
+            process.stdout.write("private_key has NO value\n");
         }
 
         if(credentials.getKeys().client_email){
