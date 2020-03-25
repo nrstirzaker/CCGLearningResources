@@ -3,9 +3,9 @@ const { GoogleSpreadsheet } = require('google-spreadsheet');
 const credentials = require('./ConfigManager');
 const rowUtils = require('./RowUtils');
 
-const getData = function (){
+const getData = function (queryParams){
     return new Promise((resolve,reject) =>{
-        loadSheet().
+        loadSheet(queryParams.topic).
             then(
                 result => {resolve(result)}
             ).catch(
@@ -15,8 +15,8 @@ const getData = function (){
     })
 }
 
-async function loadSheet(){  
-
+async function loadSheet(param){  
+    const lowerCaseParam = param ? param.toLowerCase() : 'all';
     try {
 
         const doc = new GoogleSpreadsheet(credentials.getKeys().sheet_id);
@@ -30,11 +30,18 @@ async function loadSheet(){
         const sheet = doc.sheetsByIndex[0];
         const options = {};
         options.limit = 200;
-        const rows = await sheet.getRows(options);
+        const spreadSheetRows = await sheet.getRows(options);
 
         const outputRows = [];
-        rows.forEach(row => { 
-            outputRows.push( rowUtils.getRowAsJson(row) );
+        spreadSheetRows.forEach(spreadSheetRow => {
+            const rowData = rowUtils.getRowAsJson(spreadSheetRow); 
+            if (lowerCaseParam === rowData.Topic.toLowerCase() || lowerCaseParam === 'all'){
+                const rowNumber = spreadSheetRow.rowNumber - 1;
+                const outputRow={};
+                outputRow["row" + rowNumber] = rowData;
+                outputRows.push( outputRow );
+            }
+            
         }); 
         const output = {};
         output.rows = outputRows;
@@ -43,7 +50,8 @@ async function loadSheet(){
 
     } catch (error) {
         process.stderr.write(error);
-        return {error}
+        var msg = error.message;
+        throw msg
     }
    
 };

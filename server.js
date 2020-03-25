@@ -15,11 +15,11 @@ app.get('/uptime', (req,res) => {
 });
 
 app.get('/', (req, res) => {
-    datasource.getData().
+    datasource.getData(req.query).
         then(
             result => {res.send(result)}
         ).catch(
-            error => {res.send(error)}
+            error => {res.send({"error":error})}
         );
     
 })
