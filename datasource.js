@@ -41,13 +41,17 @@ async function loadSheet(param){
 
 
         const doc = new GoogleSpreadsheet(credentials.getKeys().sheet_id);
+        process.stdout.write("Document Accessed");
+
         await doc.useServiceAccountAuth({
             client_email: credentials.getKeys().client_email,
             private_key: credentials.getKeys().private_key
-        });
-            
+        });            
+        process.stdout.write("Service Account Auth Complete");
+
         await doc.loadInfo();
-        
+        process.stdout.write("Info Loaded");
+
         const sheet = doc.sheetsByIndex[0];
         const options = {};
         options.limit = 200;
