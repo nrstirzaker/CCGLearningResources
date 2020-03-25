@@ -15,7 +15,7 @@ const getData = function (queryParams){
             ).catch(
                 error => {
                     process.stdout.write("loadSheet Error Caught\n");
-                    process.stdout.write(error);
+                    //process.stdout.write(error);
                     reject("loadSheet returned an error: " + error.message)
                 }
             );
