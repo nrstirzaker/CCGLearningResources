@@ -27,5 +27,5 @@ app.get('/', (req, res) => {
 
 app.listen(port, () => {
     startTime = moment(new Date());
-    process.stdout.write(`App listening on port ${port}!`);
+    process.stdout.write(`App listening on port ${port}!\n`);
 })
